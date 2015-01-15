@@ -1,4 +1,4 @@
-package no.computas.workshop;
+package no.computas.workshop.mavenintro;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

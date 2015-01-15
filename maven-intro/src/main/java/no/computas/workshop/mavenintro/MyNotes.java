@@ -1,4 +1,4 @@
-package no.computas.workshop;
+package no.computas.workshop.mavenintro;
 
 import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
