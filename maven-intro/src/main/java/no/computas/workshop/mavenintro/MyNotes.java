@@ -1,6 +1,6 @@
 package no.computas.workshop.mavenintro;
 
-import javax.print.attribute.standard.Media;
+//import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.LinkedList;
