@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Enkel notatblokk.
  */
-@Path("notes")
+@Path("/notes")
 public class MyNotes {
 
     private static List<String> notes = new LinkedList<>();
