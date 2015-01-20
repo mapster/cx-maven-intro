@@ -1,35 +1,11 @@
 $(document).ready(function () {
-    console.log("loool");
-
-
     $('#submitbutton').click(function () {
-        console.log("lol");
-        /*$.ajax({
-         url: '/maven-intro/rest/ghostdriver',
-         data: {},
-         success: function (data) {
-         //$('#screenshot').attr('src', '/screenshots/test.png');
-         console.log("COOL");
-
-         var lol = $('<img src="data:image/png;base64,' + data + '" />');
-         $('#displayimage').append(lol);
-         },
-         error: function(e, f, g) {
-         console.log(e); console.log(f); console.log(g);
-         },
-         type:'GET',
-         dataType: "image/png",
-         processData: false
-         });*/
-
         var button = $(this);
         button.attr('disabled', true);
 
         var div = $('<div></div>').css({width: '600px', border: '2px solid black', 'margin-bottom': '10px'});
-
         var input = document.getElementById("input").value
-
-        var heading = $('<h1></h1>').text(input);
+        var heading = $('<p></p>').text(input).css({'box-sizing': 'border-box', 'word-break': 'break-all', padding: '10px', width: '100%', display: 'table', margin: '0 auto', 'border-bottom': '2px solid black'});
         var img = $('<img />').addClass('screenshot').attr('src', 'images/loading.gif').css({display: 'table', margin: '0 auto'});
 
         div.append(heading);
