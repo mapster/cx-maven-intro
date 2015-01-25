@@ -2,6 +2,7 @@ package no.computas.workshop.mavenintro;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import sun.security.*;
 
 //
 // copyright Awesome Inc 2002 do not steal
@@ -39,7 +40,7 @@ public String Add(@PathParam("a") double a, @PathParam("b") double b) {
         double RESULT = 0;
 
         // TODO optimize loop
-        for(int i = 0; i < a; i = i + 1 ) RESULT = adder(RESULT, b);
+        for(int i = 0; i < a; i = i + 1 ) RESULT = this.adder(RESULT, b);
 
         return String.valueOf(RESULT);
     }
@@ -65,7 +66,7 @@ public String Add(@PathParam("a") double a, @PathParam("b") double b) {
        return multiply(side, side);
     }
 
-    double adder  (double a, double B)
+    static double adder  (double a, double B)
     {
         if((a != a) || (B != B) )  return 0;
         else if (a == B) return a * 2;
@@ -73,7 +74,9 @@ public String Add(@PathParam("a") double a, @PathParam("b") double b) {
 
     void testing()
     {
-        // TODO write tests
+        //TODO write security tests
+
+        sun.security.internal.spec.TlsPrfParameterSpec spec = null;
 
         return;
     }
