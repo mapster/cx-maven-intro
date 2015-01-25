@@ -74,12 +74,18 @@
                     <rulesets>
                         <!-- Her har vi skrudd på regelsettet 'basic'-->
                         <!-- Skru gjerne på de utkommenterte-->
-                        <!--<ruleset>/rulesets/java/basic.xml</ruleset>-->
-                        <!--<ruleset>/rulesets/java/braces.xml</ruleset>-->
-                        <!--<ruleset>/rulesets/java/naming.xml</ruleset>-->
-                        <!--<ruleset>/rulesets/java/empty.xml</ruleset>-->
-                        <!--<ruleset>/rulesets/java/imports.xml</ruleset>-->
+                        <!--
+                        <ruleset>/rulesets/java/basic.xml</ruleset>
+                        <ruleset>/rulesets/java/braces.xml</ruleset>
+                        <ruleset>/rulesets/java/naming.xml</ruleset>
+                        <ruleset>/rulesets/java/empty.xml</ruleset>
+                        <ruleset>/rulesets/java/imports.xml</ruleset
+                            -->
                     </rulesets>
+
+                    <includes>
+                        <include>**/AwesomeCalculatorAPI.java</include>
+                    </includes>
                 </configuration>
                 <!-- Her setter vi opp PMD sitt goal 'check' til å være en del av bygging under fasen 'validate'-->
                 <executions>
