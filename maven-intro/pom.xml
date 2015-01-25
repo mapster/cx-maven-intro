@@ -96,6 +96,18 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <rulesets>
+                        <ruleset>/rulesets/java/basic.xml</ruleset>
+                        <ruleset>/rulesets/java/braces.xml</ruleset>
+                        <!--<ruleset>/rulesets/java/naming.xml</ruleset>-->
+                        <ruleset>/rulesets/java/codesize.xml</ruleset>
+                        <ruleset>/rulesets/java/comments.xml</ruleset>
+                        <ruleset>/rulesets/java/design.xml</ruleset>
+                        <ruleset>/rulesets/java/empty.xml</ruleset>
+                        <ruleset>/rulesets/java/imports.xml</ruleset>
+                    </rulesets>
+                </configuration>
             </plugin>
         </plugins>
     </build>
