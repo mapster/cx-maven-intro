@@ -19,7 +19,11 @@ PMD analyserer kildekode og klager hvis den finner noe den ikke liker
 
 Hva den klager på er bestemt utfra hvilke "rulesets" den er satt opp til å følge
 
-I denne oppgaven skal dere konfigurere PMD til å reagere på noe stygg kode dere har arvet, og så fikse koden
+I denne oppgaven skal dere konfigurere PMD til å reagere på noe stygg kode dere har arvet
+
+Hvor mange feil eller mangler klarer dere å få PMD til å reagere på uten å endre koden?
+
+Forsøk gjerne å rette noen feil for å se PMDs respons.
 
 Når PMD smiler vil prosjektet bygge igjen. Med konfigurasjonen dere har laget vil ingen kunne bygge prosjektet med mindre de skriver tilstrekkelig fin kode!
 
