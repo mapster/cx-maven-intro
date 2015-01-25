@@ -68,6 +68,21 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.3</version>
+                <configuration>
+                    <!-- På denne siden finner dere en liste over rulesets -->
+                    <!-- http://pmd.sourceforge.net/pmd-5.2.1/pmd-java/rules/index.html -->
+                    <rulesets>
+                        <ruleset>/rulesets/java/basic.xml</ruleset>
+                        <!--<ruleset>/rulesets/java/braces.xml</ruleset>-->
+                        <!--<ruleset>/rulesets/java/naming.xml</ruleset>-->
+                        <!--<ruleset>/rulesets/java/codesize.xml</ruleset>-->
+                        <!--<ruleset>/rulesets/java/comments.xml</ruleset>-->
+                        <!--<ruleset>/rulesets/java/design.xml</ruleset>-->
+                        <!--<ruleset>/rulesets/java/empty.xml</ruleset>-->
+                        <!--<ruleset>/rulesets/java/imports.xml</ruleset>-->
+                    </rulesets>
+                </configuration>
+                <!-- Her setter vi opp PMD sitt goal 'check' til å være en del av bygging under fasen 'validate'-->
                 <executions>
                     <execution>
                         <phase>validate</phase>
@@ -77,18 +92,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <rulesets>
-                        <ruleset>/rulesets/java/basic.xml</ruleset>
-                        <ruleset>/rulesets/java/braces.xml</ruleset>
-                        <!--<ruleset>/rulesets/java/naming.xml</ruleset>-->
-                        <ruleset>/rulesets/java/codesize.xml</ruleset>
-                        <ruleset>/rulesets/java/comments.xml</ruleset>
-                        <ruleset>/rulesets/java/design.xml</ruleset>
-                        <ruleset>/rulesets/java/empty.xml</ruleset>
-                        <ruleset>/rulesets/java/imports.xml</ruleset>
-                    </rulesets>
-                </configuration>
             </plugin>
         </plugins>
     </build>
