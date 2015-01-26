@@ -1,0 +1,39 @@
+Hvorfor byggsystem?
+
+prosjekt består av mange komponenter
+- noen er egenutviklede
+- noen er eksterne (rammeverk, bibliotek)
+- disse komponentene kan igjen bestå av flere komponenter
+
+utfordringer - hvordan organiserer vi prosjektene i lys av dette
+- hva trenger jeg for å kompilere applikasjonen?
+-- hvor finner jeg det jeg trenger?
+-- hvordan vet jeg at det jeg har er riktig? riktig versjon?
+- hvor og hvordan kompilerer eller kjører jeg applikasjonen?
+- hvordan vet vi at ulike utviklere ikke gjør alt på forskjellige måter?
+-- hvordan påvirker det kvaliteten?
+
+byggsystem er programvare for å organisere og automatisere denne typen oppgaver
+- øker kvaliteten til applikasjonen
+-- mindre tid brukt på disse oppgavene
+-- rask tilbakemelding
+-- kan integrere kvalitetskontroll: utføre tester, kodeanalyse
+- nødvnedig for smidig utvikling
+-- byggserver, Continous integration
+-- alltid en fungerende utgave av applikasjonen
+
+
+Hvorfor Maven?
+
+maven har sterke meninger
+- fast prosjektstruktur
+- sentralisert, standardisert konfigurasjon
+
+maven som kilde for programvarekomponenter
+- henter "dependencies" (komponenter applikasjonen bruker) online ved behov
+- alle bygger og kjører på samme versjoner
+- ikke nødvendig å lete etter og manuelt installere/konfigurere hver enkelt tredjepartskomponent
+
+kan du bygge ett maven-prosjekt, kan du bygge alle
+
+utfordringer
