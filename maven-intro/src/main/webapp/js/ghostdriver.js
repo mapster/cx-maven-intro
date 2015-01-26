@@ -5,8 +5,19 @@ $(document).ready(function () {
 
         var div = $('<div></div>').css({width: '600px', border: '2px solid black', 'margin-bottom': '10px'});
         var input = document.getElementById("input").value
-        var heading = $('<p></p>').text(input).css({'box-sizing': 'border-box', 'word-break': 'break-all', padding: '10px', width: '100%', display: 'table', margin: '0 auto', 'border-bottom': '2px solid black'});
-        var img = $('<img />').addClass('screenshot').attr('src', 'images/loading.gif').css({display: 'table', margin: '0 auto'});
+        var heading = $('<p></p>').text(input).css({
+            'box-sizing': 'border-box',
+            'word-break': 'break-all',
+            padding: '10px',
+            width: '100%',
+            display: 'table',
+            margin: '0 auto',
+            'border-bottom': '2px solid black'
+        });
+        var img = $('<img />').addClass('screenshot').attr('src', 'images/loading.gif').css({
+            display: 'table',
+            margin: '0 auto'
+        });
 
         div.append(heading);
         div.append(img);
@@ -28,28 +39,21 @@ $(document).ready(function () {
                     binaryString[i] = String.fromCharCode(uInt8Array[i]);
                 }
                 var data = binaryString.join('');
-
                 var base64 = window.btoa(data);
 
-                //document.getElementById("screenshot").src = "data:image/png;base64," + base64;
                 img.attr('src', 'data:image/png;base64,' + base64);
                 img.css({width: '100%'});
-                img.click(function(){
-                    console.log('clickety');
+                img.click(function () {
                     window.open($(this).attr('src'), input, '');
                     return false;
                 });
             }
+            else {
+                img.css({width: '100%'});
+                img.attr('src', 'images/error_button.png');
+            }
             button.attr('disabled', false);
-
-
         };
-
         xhr.send();
-
-
-
-        //var lol = $('<img />').attr('src', '/maven-intro/rest/ghostdriver');
-        //$('#displayimage').append(lol);
     })
 });

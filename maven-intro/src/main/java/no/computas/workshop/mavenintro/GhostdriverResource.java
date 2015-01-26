@@ -17,6 +17,8 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Enkel notatblokk.
@@ -35,8 +37,16 @@ public class GhostdriverResource {
         );
         WebDriver driver = new PhantomJSDriver(caps);
         driver.manage().window().setSize(new Dimension(800, 800));
+
+
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        if (connection.getResponseCode() != 200) {
+            throw new RuntimeException("URL did not return status code 200 OK.");
+        }
+
         driver.get(url);
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         //FileUtils.copyFile(scrFile, new File("src/main/webapp/screenshots/test.png"));
         driver.quit();
 
@@ -45,7 +55,6 @@ public class GhostdriverResource {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(bufferedImage, "png", baos);
         byte[] imageData = baos.toByteArray();
-
 
 
         return imageData;
