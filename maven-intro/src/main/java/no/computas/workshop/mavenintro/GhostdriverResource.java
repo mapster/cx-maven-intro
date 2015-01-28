@@ -17,12 +17,15 @@ import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 
 /**
  * Enkel notatblokk.
  */
 @Path("ghostdriver")
 public class GhostdriverResource {
+    private static HashMap<String, String> takenScreenshots = new HashMap<String, String>();
+
     @POST
     @Produces("text/plain")
     public String postScreenshot(@FormParam("url") String url) throws IOException {
@@ -53,14 +56,15 @@ public class GhostdriverResource {
 
         driver.quit();
 
-        return tempFile.getAbsolutePath();
+        takenScreenshots.put(name, tempFile.getAbsolutePath());
+        return name;
     }
 
 
     @GET
     @Produces("image/png")
-    public byte[] getImage(@QueryParam("absolutePath") String absolutePath) throws IOException {
-        File scrFile = new File(absolutePath);
+    public byte[] getImage(@QueryParam("imageName") String imageName) throws IOException {
+        File scrFile = new File(takenScreenshots.get(imageName));
 
         BufferedImage bufferedImage = ImageIO.read(scrFile);
 

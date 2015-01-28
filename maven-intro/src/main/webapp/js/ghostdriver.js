@@ -32,15 +32,13 @@ $(document).ready(function () {
                 button.attr('disabled', true);
             },
             success: function (result) {
-                img.attr('src', '/maven-intro/rest/ghostdriver?absolutePath=' + encodeURIComponent(result));
+                img.attr('src', '/maven-intro/rest/ghostdriver?imageName=' + encodeURIComponent(result));
                 img.css({width: '100%'});
                 img.click(function () {
                     window.open($(this).attr('src'), input, '');
                     return false;
                 });
                 button.attr('disabled', false);
-
-
             },
             error: function (a, b, c) {
                 console.log(a);
@@ -49,7 +47,6 @@ $(document).ready(function () {
                 img.css({width: '100%'});
                 img.attr('src', 'images/error_button.png');
                 button.attr('disabled', false);
-
             }
         });
 
