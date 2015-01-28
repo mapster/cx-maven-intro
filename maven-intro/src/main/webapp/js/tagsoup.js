@@ -6,13 +6,11 @@ $(document).ready(function () {
             doc.open();
             doc.write(result);
             doc.close();
-            //$('#iframe').contents().html($(result).html());
-
         });
-
-
-       // $('#iframe').attr('src', '/maven-intro/rest/tagsoup?input=' + encodeURIComponent($('#input').val()));
     });
 
+    $('#clearbutton').click(function () {
+        $('#input').val('');
+    });
 
 });
