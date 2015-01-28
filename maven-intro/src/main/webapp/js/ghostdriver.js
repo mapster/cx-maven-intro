@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $('#submitbutton').click(function () {
         var button = $(this);
-        button.attr('disabled', true);
 
         var div = $('<div></div>').css({width: '600px', border: '2px solid black', 'margin-bottom': '10px'});
         var input = document.getElementById("input").value
@@ -24,36 +23,36 @@ $(document).ready(function () {
 
         $('#displayimage').prepend(div);
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/maven-intro/rest/ghostdriver?url=' + encodeURIComponent(input), true);
-        //xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
-        xhr.responseType = 'arraybuffer';
-
-        xhr.onload = function (e) {
-            if (this.status == 200) {
-                var uInt8Array = new Uint8Array(this.response);
-                var i = uInt8Array.length;
-                var binaryString = new Array(i);
-                while (i--) {
-                    binaryString[i] = String.fromCharCode(uInt8Array[i]);
-                }
-                var data = binaryString.join('');
-                var base64 = window.btoa(data);
-
-                img.attr('src', 'data:image/png;base64,' + base64);
+        $.ajax({
+            type: 'POST',
+            url: '/maven-intro/rest/ghostdriver',
+            dataType: 'text',
+            data: {url: input},
+            beforeSend: function () {
+                button.attr('disabled', true);
+            },
+            success: function (result) {
+                img.attr('src', '/maven-intro/rest/ghostdriver?absolutePath=' + encodeURIComponent(result));
                 img.css({width: '100%'});
                 img.click(function () {
                     window.open($(this).attr('src'), input, '');
                     return false;
                 });
-            }
-            else {
+                button.attr('disabled', false);
+
+
+            },
+            error: function (a, b, c) {
+                console.log(a);
+                console.log(b);
+                console.log(c);
                 img.css({width: '100%'});
                 img.attr('src', 'images/error_button.png');
+                button.attr('disabled', false);
+
             }
-            button.attr('disabled', false);
-        };
-        xhr.send();
+        });
+
+
     })
 });

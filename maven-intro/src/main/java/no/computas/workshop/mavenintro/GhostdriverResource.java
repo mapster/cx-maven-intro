@@ -1,5 +1,6 @@
 package no.computas.workshop.mavenintro;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -9,10 +10,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import javax.imageio.ImageIO;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -25,9 +23,9 @@ import java.net.URL;
  */
 @Path("ghostdriver")
 public class GhostdriverResource {
-    @GET
-    @Produces("image/png")
-    public byte[] getScreenshot(@QueryParam("url") String url) throws IOException {
+    @POST
+    @Produces("text/plain")
+    public String postScreenshot(@FormParam("url") String url) throws IOException {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(true);
         caps.setCapability("takesScreenshot", true);
@@ -47,8 +45,22 @@ public class GhostdriverResource {
 
         driver.get(url);
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        //FileUtils.copyFile(scrFile, new File("src/main/webapp/screenshots/test.png"));
+        File tempDir = new File(System.getProperty("java.io.tmpdir"));
+        String name = System.currentTimeMillis() + ".png";
+
+        File tempFile = File.createTempFile(name, ".tmp", tempDir);
+        FileUtils.copyFile(scrFile, tempFile);
+
         driver.quit();
+
+        return tempFile.getAbsolutePath();
+    }
+
+
+    @GET
+    @Produces("image/png")
+    public byte[] getImage(@QueryParam("absolutePath") String absolutePath) throws IOException {
+        File scrFile = new File(absolutePath);
 
         BufferedImage bufferedImage = ImageIO.read(scrFile);
 
@@ -59,5 +71,6 @@ public class GhostdriverResource {
 
         return imageData;
     }
+
 
 }
