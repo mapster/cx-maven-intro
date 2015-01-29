@@ -75,8 +75,74 @@
                     <path>/maven-intro</path>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <!-- På denne siden finner dere en liste over rulesets -->
+                    <!-- http://pmd.sourceforge.net/pmd-5.2.1/pmd-java/rules/index.html -->
+                    <rulesets>
+                        <!-- Her har vi skrudd på regelsettet 'basic'-->
+                        <!-- Skru gjerne på de utkommenterte-->
+                        <!--
+                        <ruleset>/rulesets/java/basic.xml</ruleset>
+                        <ruleset>/rulesets/java/braces.xml</ruleset>
+                        <ruleset>/rulesets/java/naming.xml</ruleset>
+                        <ruleset>/rulesets/java/empty.xml</ruleset>
+                        <ruleset>/rulesets/java/imports.xml</ruleset
+                            -->
+                        <ruleset>rulesets/java/coupling.xml</ruleset>
+                        <ruleset>rulesets/java/design.xml</ruleset>
+                        <ruleset>rulesets/java/controversial.xml</ruleset>
+                        <ruleset>rulesets/java/codesize.xml</ruleset>
+                        <ruleset>rulesets/java/clone.xml</ruleset>
+                        <ruleset>rulesets/java/braces.xml</ruleset>
+                        <ruleset>rulesets/java/basic.xml</ruleset>
+                        <ruleset>rulesets/java/finalizers.xml</ruleset>
+                        <ruleset>rulesets/java/imports.xml</ruleset>
+                        <ruleset>rulesets/java/logging-jakarta-commons.xml</ruleset>
+                        <ruleset>rulesets/java/logging-java.xml</ruleset>
+                        <ruleset>rulesets/java/migrating.xml</ruleset>
+                        <ruleset>rulesets/java/naming.xml</ruleset>
+                        <ruleset>rulesets/java/optimizations.xml</ruleset>
+                        <ruleset>rulesets/java/strictexception.xml</ruleset>
+                        <ruleset>rulesets/java/strings.xml</ruleset>
+                        <ruleset>rulesets/java/sunsecure.xml</ruleset>
+                        <ruleset>rulesets/java/typeresolution.xml</ruleset>
+                        <ruleset>rulesets/java/unusedcode.xml</ruleset>
+                    </rulesets>
+
+                    <!-- I denne oppgaven skal PMD kun analysere filen AwesomeCalculatorAPI.java-->
+                    <includes>
+                        <include>**/AwesomeCalculatorAPI.java</include>
+                    </includes>
+
+                </configuration>
+
+                <!-- Her setter vi opp PMD sine goals 'check' og 'cpd-check' til å være en del av maven-byggfasen 'validate'-->
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                            <goal>cpd-check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <properties>
         <jersey.version>2.15</jersey.version>
