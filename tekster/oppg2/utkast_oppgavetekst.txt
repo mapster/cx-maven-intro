@@ -5,7 +5,8 @@ Fortelle hva en maven modul er. Deklarasjon av modul, dvs. modulens groupid, art
 Properties er konstanter man kan referere til i pom.xml. 
 Kjapt introdusere plugins: Ekstra funksjonalitet som maven kan utføre. Koble opp mot goals. Koble goals opp mot lifecycle phases. 
 Dependencies: biblioteker. Classpath håndteres av maven. De vil bli lastet ned osv.
-Oppg2: sjekk ut. Fortelle om oppgaven: finn ut hva som mangler (det mangler noe i pom-filen). 
+Oppg2: sjekk ut. Fortelle om oppgaven: det mangler noe i pom-filen.  Vise kildekode, se på imports, vise at noe intellij highlighter med rødt. Forsøk compile, skal feile.
+
 
 Sluttkrav: Sjekket ut oppg2. Nødvendig dependency står i tekst på lerret.
 
