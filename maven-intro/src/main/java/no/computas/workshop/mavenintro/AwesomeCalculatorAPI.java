@@ -26,7 +26,9 @@ public String Add(@PathParam("a") double a, @PathParam("b") double b) {
     } catch (Exception ex)
     {
 
-        return "Sorry, basic arithmetic is no longer" + " valid!" + "";
+        String returnMsg = "Sorry, basic arithmetic is no longer";
+        returnMsg += " valid!" + "";
+        return returnMsg;
     }
 
     return new String(String.valueOf(adder(a, b))) + "";

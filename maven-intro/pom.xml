@@ -102,11 +102,14 @@
                         <ruleset>rulesets/java/unusedcode.xml</ruleset>
                     </rulesets>
 
+                    <!-- I denne oppgaven skal PMD kun analysere filen AwesomeCalculatorAPI.java-->
                     <includes>
                         <include>**/AwesomeCalculatorAPI.java</include>
                     </includes>
+
                 </configuration>
-                <!-- Her setter vi opp PMD sitt goal 'check' til å være en del av bygging under fasen 'validate'-->
+
+                <!-- Her setter vi opp PMD sine goals 'check' og 'cpd-check' til å være en del av maven-byggfasen 'validate'-->
                 <executions>
                     <execution>
                         <phase>validate</phase>
