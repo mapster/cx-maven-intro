@@ -1,0 +1,3 @@
+Forkrav: IntelliJ åpen med prosjekt.
+
+Kjør tomcat7:deploy goal. Åpne nettleser med url http://localhost:8080/maven-intro. Test siden. Gjør en liten endring i f.eks index.html eller MyNotes, kjøre tomcat7:redeploy goal, og se endring.
