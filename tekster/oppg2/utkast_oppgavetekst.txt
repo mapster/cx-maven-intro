@@ -1,0 +1,15 @@
+Forkrav: Sjekket ut oppg1.
+
+Introdusere relevante deler av pom.xml.
+Fortelle hva en maven modul er. Deklarasjon av modul, dvs. modulens groupid, artifactId, version og name.
+Properties er konstanter man kan referere til i pom.xml. 
+Kjapt introdusere plugins: Ekstra funksjonalitet som maven kan utføre. Koble opp mot goals. Koble goals opp mot lifecycle phases. 
+Dependencies: biblioteker. Classpath håndteres av maven. De vil bli lastet ned osv.
+Oppg2: sjekk ut. Fortelle om oppgaven: finn ut hva som mangler (det mangler noe i pom-filen). 
+
+Sluttkrav: Sjekket ut oppg2. Nødvendig dependency står i tekst på lerret.
+
+Aksjon:
+Endre navn på klasse til ScreenshotService (eller lignende), og endre @Path("ghostdriver") til "screenshot".
+Endre navn på ghostdriver.html til index.html
+
