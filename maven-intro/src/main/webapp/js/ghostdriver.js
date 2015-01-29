@@ -3,7 +3,7 @@ $(document).ready(function () {
         var button = $(this);
 
         var div = $('<div></div>').css({width: '600px', border: '2px solid black', 'margin-bottom': '10px'});
-        var input = document.getElementById("input").value
+        var input = $('#input').val();
         var heading = $('<p></p>').text(input).css({
             'box-sizing': 'border-box',
             'word-break': 'break-all',
