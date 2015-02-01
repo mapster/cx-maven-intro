@@ -22,9 +22,9 @@ import java.util.HashMap;
 /**
  * Enkel notatblokk.
  */
-@Path("ghostdriver")
-public class GhostdriverResource {
-    private static HashMap<String, String> takenScreenshots = new HashMap<String, String>();
+@Path("webscreenshot")
+public class WebScreenshotResource {
+    private static HashMap<String, String> takenScreenshots = new HashMap<>();
 
     @POST
     @Produces("text/plain")
