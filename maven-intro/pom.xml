@@ -72,8 +72,7 @@
                     <!-- På denne siden finner dere en liste over rulesets -->
                     <!-- http://pmd.sourceforge.net/pmd-5.2.1/pmd-java/rules/index.html -->
                     <rulesets>
-                        <!-- Her har vi skrudd på regelsettet 'basic'-->
-                        <!-- Legg til flere her!-->
+                        <!-- Legg til rulesets på denne måten-->
                         <ruleset>/rulesets/java/basic.xml</ruleset>
                     </rulesets>
 
