@@ -27,18 +27,18 @@ import java.io.StringWriter;
 /**
  * Created by nicho on 26/01/15.
  */
-@Path("tagsoup")
-public class TagSoupResource {
+@Path("htmlparser")
+public class HtmlParserResource {
     @POST
     @Produces("text/html")
     public String getHtml(@FormParam("input") String input) throws ParsingException, IOException, SAXException, ParserConfigurationException, TransformerException {
-        Parser p = new Parser();
-        p.setFeature(Parser.namespacePrefixesFeature, false);
-        p.setFeature(Parser.namespacesFeature, false);
-        p.setFeature(Parser.xmlnsURIsFeature, false);
+        Parser parser = new Parser();
+        parser.setFeature(Parser.namespacePrefixesFeature, false);
+        parser.setFeature(Parser.namespacesFeature, false);
+        parser.setFeature(Parser.xmlnsURIsFeature, false);
         SAX2DOM sax2dom = new SAX2DOM();
-        p.setContentHandler(sax2dom);
-        p.parse(new InputSource( new StringReader(input)));
+        parser.setContentHandler(sax2dom);
+        parser.parse(new InputSource(new StringReader(input)));
         Node doc = sax2dom.getDOM();
         StringWriter writer = new StringWriter();
         Transformer transformer = TransformerFactory.newInstance().newTransformer();

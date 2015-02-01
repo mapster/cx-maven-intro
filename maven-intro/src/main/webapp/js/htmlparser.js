@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#submitbutton').click(function () {
-        $.post('/maven-intro/rest/tagsoup', {input: $('#input').val()}, function (result) {
+        $.post('/maven-intro/rest/htmlparser', {input: $('#input').val()}, function (result) {
             $('#display').val(result);
             var doc = document.getElementById('iframe').contentWindow.document;
             doc.open();
@@ -12,5 +12,4 @@ $(document).ready(function () {
     $('#clearbutton').click(function () {
         $('#input').val('');
     });
-
 });
