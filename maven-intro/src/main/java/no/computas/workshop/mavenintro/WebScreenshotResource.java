@@ -29,16 +29,15 @@ public class WebScreenshotResource {
     @POST
     @Produces("text/plain")
     public String postScreenshot(@FormParam("url") String url) throws IOException {
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setJavascriptEnabled(true);
-        caps.setCapability("takesScreenshot", true);
-        caps.setCapability(
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setJavascriptEnabled(true);
+        capabilities.setCapability("takesScreenshot", true);
+        capabilities.setCapability(
                 PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-                "/Users/nicho/Downloads/phantomjs-1.9.8-macosx/bin/phantomjs"
+                WebScreenshotResource.class.getClassLoader().getResource("phantomjs").getPath()
         );
-        WebDriver driver = new PhantomJSDriver(caps);
+        WebDriver driver = new PhantomJSDriver(capabilities);
         driver.manage().window().setSize(new Dimension(800, 800));
-
 
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         connection.connect();
@@ -47,24 +46,24 @@ public class WebScreenshotResource {
         }
 
         driver.get(url);
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         File tempDir = new File(System.getProperty("java.io.tmpdir"));
-        String name = System.currentTimeMillis() + ".png";
+        String filename = System.currentTimeMillis() + ".png";
 
-        File tempFile = File.createTempFile(name, ".tmp", tempDir);
-        FileUtils.copyFile(scrFile, tempFile);
+        File tempFile = File.createTempFile(filename, ".tmp", tempDir);
+        FileUtils.copyFile(screenshot, tempFile);
 
         driver.quit();
 
-        takenScreenshots.put(name, tempFile.getAbsolutePath());
-        return name;
+        takenScreenshots.put(filename, tempFile.getAbsolutePath());
+        return filename;
     }
 
 
     @GET
     @Produces("image/png")
-    public byte[] getImage(@QueryParam("imageName") String imageName) throws IOException {
-        File scrFile = new File(takenScreenshots.get(imageName));
+    public byte[] getImage(@QueryParam("filename") String filename) throws IOException {
+        File scrFile = new File(takenScreenshots.get(filename));
 
         BufferedImage bufferedImage = ImageIO.read(scrFile);
 

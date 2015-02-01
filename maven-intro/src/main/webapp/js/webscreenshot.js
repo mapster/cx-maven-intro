@@ -37,7 +37,7 @@ $(document).ready(function () {
                         return false;
                     });
                 });
-                img.attr('src', '/maven-intro/rest/webscreenshot?imageName=' + encodeURIComponent(result));
+                img.attr('src', '/maven-intro/rest/webscreenshot?filename=' + encodeURIComponent(result));
             },
             error: function (a, b, c) {
                 img.css({width: '100%'});
