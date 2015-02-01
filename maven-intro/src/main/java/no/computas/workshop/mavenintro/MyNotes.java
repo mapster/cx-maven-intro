@@ -1,6 +1,5 @@
 package no.computas.workshop.mavenintro;
 
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.LinkedList;
@@ -19,9 +18,18 @@ public class MyNotes {
     public String getNotes() {
         String s = new String();
         for(String note: notes) {
-            s += note + "\n";
+            if (!s.isEmpty()) {
+                s += "\n";
+            }
+            s += note;
         }
         return s;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Notes getNotesAsJson() {
+        return new Notes(notes);
     }
 
     @POST
