@@ -28,25 +28,23 @@ public class WebScreenshotResource {
     @POST
     @Produces("text/plain")
     public String postScreenshot(@FormParam("url") String url) throws IOException {
+        //Kobler seg til Selenium, starter Firefox og maksimerer den.
         WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), DesiredCapabilities.firefox());
         driver.manage().window().maximize();
 
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.connect();
-        if (connection.getResponseCode() != 200) {
-            throw new RuntimeException("URL did not return status code 200 OK.");
-        }
-
+        //Laster inn URL
         driver.get(url);
+
+        //Tar screenshot og lagrer det blant temporære filer.
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         File tempDir = new File(System.getProperty("java.io.tmpdir"));
         String filename = System.currentTimeMillis() + ".png";
-
         File tempFile = File.createTempFile(filename, ".tmp", tempDir);
         FileUtils.copyFile(screenshot, tempFile);
 
         driver.quit();
 
+        //Legger stien til screenshot i et hashmap slik at det kan hentes igjen senere.
         takenScreenshots.put(filename, tempFile.getAbsolutePath());
         return filename;
     }
@@ -56,13 +54,11 @@ public class WebScreenshotResource {
     @Produces("image/png")
     public byte[] getImage(@QueryParam("filename") String filename) throws IOException {
         File scrFile = new File(takenScreenshots.get(filename));
-
         BufferedImage bufferedImage = ImageIO.read(scrFile);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(bufferedImage, "png", baos);
         byte[] imageData = baos.toByteArray();
-
 
         return imageData;
     }
