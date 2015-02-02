@@ -25,7 +25,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 
 /**
- * Created by nicho on 26/01/15.
+ * Parser HTML-markup og returnerer et helt dokument.
  */
 @Path("htmlparser")
 public class HtmlParserResource {
