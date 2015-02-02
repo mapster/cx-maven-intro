@@ -1,0 +1,26 @@
+Dependencies
+=============
+groupId: com.googlecode.libphonenumber
+artifactId: libphonenumber
+version: 7.0.1
+------------------------------------------------
+groupId: com.googlecode.libphonenumber
+artifactId: carrier
+version: 1.8
+
+Eksempel
+=========
+PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+Phonenumber.PhoneNumber phoneNumber = null;
+try {
+    phoneNumber = phoneUtil.parse(input, "NO");
+} catch (NumberParseException e) {
+    return String.format("Kunne ikke tolke telefonnummer %s: %s", input, e.getMessage());
+}
+
+if(!phoneUtil.isValidNumber(phoneNumber)) {
+    throw new BadRequestException(String.format("Ugyldig telefonnummer %s", input));
+}
+
+PhoneNumberToCarrierMapper carrierMapper = PhoneNumberToCarrierMapper.getInstance();
+return carrierMapper.getNameForNumber(phoneNumber, Locale.ENGLISH);

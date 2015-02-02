@@ -1,0 +1,21 @@
+Dependencies
+=============
+groupId: com.frequal.romannumerals
+artifactId: roman-numerals
+version: 1.3
+
+Eksempel
+=========
+
+Konverter romertall til vanlige heltall
+----------------------------------------
+try {
+    return String.format("%s heltallsverdi er %d", input, converter.toNumber(input));
+} catch (ParseException e) {
+    return String.format("Illegal argument %s:", e.getMessage());
+}
+
+Konverter vanlige heltall til romertall
+----------------------------------------
+return String.format("%d som romertall: %s.", number,
+        converter.toRomanNumerals(input));

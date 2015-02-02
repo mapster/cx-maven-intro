@@ -1,0 +1,15 @@
+Dependencies
+=============
+groupId: dnsjava
+artifactId: dnsjava
+version: 2.1.6
+
+
+Eksempel
+=========
+
+if (input == null || input.isEmpty()) {
+   return "Ingen verdi er gitt som input!";
+}
+InetAddress address = Address.getByName(input);
+return address.toString();
