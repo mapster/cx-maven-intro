@@ -46,7 +46,6 @@
             <version>1.2.1</version>
         </dependency>
 
-
         <dependency>
             <groupId>xom</groupId>
             <artifactId>xom</artifactId>
@@ -54,7 +53,6 @@
         </dependency>
 
         <dependency>
-            <!-- jsoup HTML parser library @ http://jsoup.org/ -->
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.8.1</version>
