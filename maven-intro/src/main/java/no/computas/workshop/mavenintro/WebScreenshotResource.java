@@ -4,7 +4,8 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import javax.imageio.ImageIO;
 import javax.ws.rs.*;
@@ -17,7 +18,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 /**
- * Enkel notatblokk.
+ * Tar screenshots av nettsider.
  */
 @Path("webscreenshot")
 public class WebScreenshotResource {
@@ -26,7 +27,7 @@ public class WebScreenshotResource {
     @POST
     @Produces("text/plain")
     public String postScreenshot(@FormParam("url") String url) throws IOException {
-        WebDriver driver = new FirefoxDriver();
+        WebDriver driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), DesiredCapabilities.firefox());
         driver.manage().window().maximize();
 
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
