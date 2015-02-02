@@ -1,6 +1,7 @@
 package no.computas.workshop.mavenintro;
 
 import org.apache.commons.io.FileUtils;
+//Se nærmere på disse pakkene, kan de ha sammenheng med hva som mangler i POM?
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
