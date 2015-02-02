@@ -1,13 +1,10 @@
 package no.computas.workshop.mavenintro;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriverService;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import javax.imageio.ImageIO;
 import javax.ws.rs.*;
@@ -29,15 +26,8 @@ public class WebScreenshotResource {
     @POST
     @Produces("text/plain")
     public String postScreenshot(@FormParam("url") String url) throws IOException {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setJavascriptEnabled(true);
-        capabilities.setCapability("takesScreenshot", true);
-        capabilities.setCapability(
-                PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-                WebScreenshotResource.class.getClassLoader().getResource("phantomjs").getPath()
-        );
-        WebDriver driver = new PhantomJSDriver(capabilities);
-        driver.manage().window().setSize(new Dimension(800, 800));
+        WebDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
 
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         connection.connect();
