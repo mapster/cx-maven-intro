@@ -1,0 +1,10 @@
+Dependencies
+============
+groupId: com.elega9t
+artifactId: number-to-words
+version: 1.0.0
+
+Eksempel
+=========
+ThreeDigitNumberInWordsFormatter formatter = ThreeDigitNumberInWordsFormatter.getInstance();
+return formatter.format(199);
