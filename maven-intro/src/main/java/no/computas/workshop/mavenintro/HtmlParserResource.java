@@ -2,6 +2,7 @@ package no.computas.workshop.mavenintro;
 
 import nu.xom.ParsingException;
 import org.apache.xalan.xsltc.trax.SAX2DOM;
+//Se nærmere Parser og Jsoup, kan de ha sammenheng med hva som mangler i POM?
 import org.ccil.cowan.tagsoup.Parser; //Hint!
 import org.jsoup.Jsoup; //Hint!
 import org.jsoup.nodes.Document;
