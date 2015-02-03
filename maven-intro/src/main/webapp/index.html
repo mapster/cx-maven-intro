@@ -2,18 +2,15 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>MyNotes</title>
+    <title>Artige tjenester</title>
     <script src="js/jquery-2.1.3.js"></script>
     <script src="js/strings.js"></script>
     <script>
         $(document).ready(function() {
-            MyStrings.addResultRow("result1");
-            MyStrings.addResultRow("result2");
-            MyStrings.addResultRow("result3");
-
-            $("#addRow").click(function() {
-                MyStrings.addResultRow($("#servicePath").val());
-            });
+            var i;
+            for(i = 1; i <= 8; i++) {
+                MyStrings.addResultRow("result"+i);
+            }
         });
     </script>
 </head>
@@ -34,11 +31,20 @@
     <br />
     <br />
     <br />
-    <div>
-        <h3>Legg til flere endepunkt</h3>
-        <label>Verdien til @Path</label>
-        <input id="servicePath"/>
-        <button id="addRow">Legg til</button>
-    </div>
+    <h2>Biblioteksforslag</h2>
+    <ul>
+        <li><a href="dns.txt">DnsJava:</a> finn ip til domene</li>
+        <li><a href="tlf.txt">libphonenumber:</a> finn nettleverandør for telefonnummer</li>
+        <li><a href="joda.txt">JodaTime:</a> antall dager til angitt dato</li>
+        <li><a href="roman.txt">RomanNumerals:</a> Konverter fra/til romerske tall</li>
+        <li><a href="int2words.txt">Number-to-words:</a> konverter tall til ord</li>
+    </ul>
+    <h3>Ekstra</h3>
+    <ul>
+        <li><a href="http://commons.apache.org/proper/commons-validator">Commons-validator:</a> valider epost, kredittkort, dato, tid ISBN osv.</li>
+        <li><a href="http://commons.apache.org/proper/commons-codec">Commons-codec:</a> Encode som base64, www-form-urlencoded m.fl.</li>
+        <li><a href="http://www.jasypt.org/">Jasypt:</a> Enkel strengkryptering</li>
+        <li><a href="http://commons.apache.org/proper/commons-compress/">Commons-compress:</a> Filkomprimering fra/til mange kjente format</li>
+    </ul>
 </body>
 </html>
