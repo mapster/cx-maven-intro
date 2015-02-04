@@ -2,9 +2,8 @@ package no.computas.workshop.mavenintro;
 
 import nu.xom.ParsingException;
 import org.apache.xalan.xsltc.trax.SAX2DOM;
-//Se nærmere Parser og Jsoup, kan de ha sammenheng med hva som mangler i POM?
-import org.ccil.cowan.tagsoup.Parser; //Hint!
-import org.jsoup.Jsoup; //Hint!
+import org.ccil.cowan.tagsoup.Parser;
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Entities;
 import org.w3c.dom.Node;
@@ -33,7 +32,7 @@ public class HtmlParserResource {
     @POST
     @Produces("text/html")
     public String getHtml(@FormParam("input") String input) throws ParsingException, IOException, SAXException, ParserConfigurationException, TransformerException {
-        //Parser
+        //Tagsoup parser
         Parser parser = new Parser();
         parser.setFeature(Parser.namespacePrefixesFeature, false);
         parser.setFeature(Parser.namespacesFeature, false);
