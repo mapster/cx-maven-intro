@@ -2,7 +2,6 @@ package no.computas.workshop.mavenintro;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import sun.security.*;
 
 //
 // copyright Awesome Inc 2002 do not steal
