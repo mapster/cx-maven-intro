@@ -1,4 +1,0 @@
-3 min: Vis compile. Se hva som ikke compilerer. 
-8 min: Åpne og se på hva som er rødt intellij. Pek på import pakkenavn.
-
-Google er din venn.
