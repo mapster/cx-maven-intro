@@ -69,11 +69,24 @@
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.3</version>
                 <configuration>
-                    <!-- På denne siden finner dere en liste over rulesets -->
-                    <!-- http://pmd.sourceforge.net/pmd-5.2.1/pmd-java/rules/index.html -->
+
                     <rulesets>
                         <!-- Legg til rulesets på denne måten-->
                         <ruleset>/rulesets/java/basic.xml</ruleset>
+                        <!-- <ruleset>/rulesets/java/naming.xml</ruleset> -->
+
+                        <!-- Andre nyttige rulesets: -->
+                        <!-- Unngå tomme kodeblokker: empty.xml -->
+                        <!-- Ryddig i imports: imports.xml -->
+                        <!-- Bruk av parentes: braces.xml -->
+                        <!-- Bruk av strenger: strings.xml-->
+
+                        <!-- Noen mer avanserte: -->
+                        <!-- Best practices i design: design.xml -->
+                        <!-- Optimering: optimizations.xml -->
+
+                        <!-- Her finner dere en komplett liste av rulesets, med beskrivelser-->
+                        <!-- http://pmd.sourceforge.net/pmd-5.2.1/pmd-java/rules/index.html -->
                     </rulesets>
 
                     <!-- I denne oppgaven skal PMD kun analysere filen AwesomeCalculatorAPI.java-->
