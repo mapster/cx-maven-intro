@@ -1,5 +1,0 @@
-Aksjon: Lag branch med EndepunktKlasse, som tar i mot streng og gir streng.
-
-Liste med forslag: dependency og kodeeksempel url.
-
-Foreslå oppg4-dns som start.
