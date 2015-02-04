@@ -1,0 +1,45 @@
+Oppgave 5 - Plugins - Statisk kodeanalyse
+
+Introtekst
+
+Maven er mer enn et verktøy for å holde styr på prosjekters avhengigheter
+
+Plugins utfører det faktiske arbeidet
+
+Dere har allerede brukt plugins: tomcat-deploy, compiler
+
+Mange nyttige plugins - vi skal se på én for å forbedre og opprettholde kodekvalitet
+
+Igjen er ikke selve verktøyet en del av Maven, men Maven lar oss veldig enkelt sette opp og integrere dette i byggprosessen
+
+
+Oppgaven
+
+PMD analyserer kildekode og klager hvis den finner noe den ikke liker
+
+Hva den klager på er bestemt utfra hvilke "rulesets" den er satt opp til å følge
+
+I denne oppgaven skal dere konfigurere PMD til å reagere på noe stygg kode dere har arvet
+
+Hvor mange feil eller mangler klarer dere å få PMD til å reagere på uten å endre koden?
+
+Når dere har lagt til de ruleset dere ønsker, kan dere forsøke å rette feil og se hvordan PMD reagerer. Dere får bare lov til å fikse på ting som PMD klager på; logikk skal ikke røres!
+
+Når PMD smiler vil prosjektet bygge igjen. Med konfigurasjonen dere har laget vil ingen kunne bygge prosjektet med mindre de skriver tilstrekkelig fin kode!
+
+Tips: 
+
+- Hvis den finner feil lager PMD en rapport i target/site/pmd.html
+
+- "Site" er et lifecycle goal i maven som genererer dokumentasjon for applikasjonen. Kjør denne for å generere nettsidedata som PMDs rapporter bruker (da blir rapportsiden betydelig penere)
+
+
+Moral: 
+- var dette fin kode? 
+- ser dere hvordan statisk analyse kan hjelpe? 
+- ser dere fordelene med å integrere dette i byggprosessen?
+- for å ta slike verktøy i bruk er det gjennom maven snakk om et par linjer XML
+- Det finnes også mye statisk analyse ikke kan hjelpe dere med! En kalkulator er da ikke (på noen meningsfull måte) en exception, implementasjonen av compareTo er svært tvilsom, mm.
+- Dere så kanskje at IntelliJ gjør noe statisk analyse og kommer med forbedringsforslag - men bruk av dette går på enkeltuvikleren, ikke selve prosjektet
+- legg merke til hvordan tomcat-pluginen legges til på samme måte og bruker tilsvarende, standardisert konfigurasjon og kjøring, selv om formålet er noe helt annet
+
