@@ -29,6 +29,7 @@ $(document).ready(function () {
             url: '/maven-intro/rest/webscreenshot',
             dataType: 'text',
             data: {url: input},
+            timeout: 60000,
             success: function (result) {
                 img.load(function () {
                     img.css({width: '100%'});
